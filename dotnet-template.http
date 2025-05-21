@@ -1,0 +1,44 @@
+# Test requests for the DotNet Template API
+
+@baseUrl = http://localhost:5135
+
+###
+# @name GetAllItems
+GET {{baseUrl}}/api/item
+Accept: application/json
+
+###
+# @name CreateItem
+POST {{baseUrl}}/api/item
+Content-Type: application/json
+
+{
+  "name": "Test Item",
+  "description": "This is a test item created via HTTP request",
+  "isActive": true
+}
+
+### 
+# @name GetItemById
+# Run the CreateItem request first and copy the ID from the response
+@itemId = 00000000-0000-0000-0000-000000000000
+GET {{baseUrl}}/api/item/{{itemId}}
+Accept: application/json
+
+###
+# @name UpdateItem
+# Run the CreateItem request first and copy the ID from the response
+PUT {{baseUrl}}/api/item/{{itemId}}
+Content-Type: application/json
+
+{
+  "id": "{{itemId}}",
+  "name": "Updated Test Item",
+  "description": "This item has been updated",
+  "isActive": true
+}
+
+###
+# @name DeleteItem
+# Run the CreateItem request first and copy the ID from the response
+DELETE {{baseUrl}}/api/item/{{itemId}}
