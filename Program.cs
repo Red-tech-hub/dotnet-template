@@ -3,12 +3,25 @@ using MyWeatherApi.Services;
 using MyWeatherApi.Services.Interfaces;
 // using MyWeatherApi.Middleware;
 using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddScoped<IItemService, ItemService>();
+
+// Add CORS services
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 
 // Add Swagger services
 builder.Services.AddEndpointsApiExplorer();
@@ -46,6 +59,8 @@ if (app.Environment.IsDevelopment())
 app.UseErrorHandlingMiddleware();
 
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.UseAuthorization();
 
