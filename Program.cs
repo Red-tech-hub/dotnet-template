@@ -1,10 +1,9 @@
 using MyWeatherApi.Middleware;
 using MyWeatherApi.Services;
 using MyWeatherApi.Services.Interfaces;
-// using MyWeatherApi.Middleware;
-using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
-using Swashbuckle.AspNetCore.SwaggerGen;
+using Microsoft.AspNetCore.OpenApi;
+using Microsoft.OpenApi;
+using MyWeatherApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,21 +22,11 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Add Swagger services
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
+// Add OpenAPI services (ASP.NET Core built-in)
+builder.Services.AddOpenApi(options =>
 {
-    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
-    {
-        Title = "DotNet Template API",
-        Version = "v1",
-        Description = "A standard template API built with ASP.NET Core"
-    });
-
-    // Set the comments path for the Swagger JSON and UI
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    c.IncludeXmlComments(xmlPath);
+    options.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi3_1;
+    options.AddDocumentTransformer<DocumentInfoTransformer>();
 });
 
 var app = builder.Build();
@@ -47,12 +36,14 @@ if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
     
-    // Enable Swagger UI in development
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
+    // Map OpenAPI document endpoint
+    app.MapOpenApi();
+    
+    // Enable Swagger UI for interactive API documentation
+    app.UseSwaggerUI(options =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "DotNet Template API v1");
-        c.RoutePrefix = string.Empty; // Serve the Swagger UI at the app's root
+        options.SwaggerEndpoint("/openapi/v1.json", "DotNet Template API v1");
+        options.RoutePrefix = "swagger"; // Serve Swagger UI at /swagger
     });
 }
 

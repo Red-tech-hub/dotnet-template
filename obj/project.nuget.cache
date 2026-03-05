@@ -1,16 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "RtuFeDJulv8=",
+  "dgSpecHash": "QYtob0BG8iM=",
   "success": true,
   "projectFilePath": "C:\\Users\\RHeijligers\\Documents\\OVSoftware\\Repositories\\Experimental\\dotnet-template\\dotnet-template.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\RHeijligers\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.14\\microsoft.aspnetcore.openapi.8.0.14.nupkg.sha512",
-    "C:\\Users\\RHeijligers\\.nuget\\packages\\microsoft.extensions.apidescription.server\\8.0.0\\microsoft.extensions.apidescription.server.8.0.0.nupkg.sha512",
-    "C:\\Users\\RHeijligers\\.nuget\\packages\\microsoft.openapi\\1.6.23\\microsoft.openapi.1.6.23.nupkg.sha512",
-    "C:\\Users\\RHeijligers\\.nuget\\packages\\swashbuckle.aspnetcore\\9.0.1\\swashbuckle.aspnetcore.9.0.1.nupkg.sha512",
-    "C:\\Users\\RHeijligers\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\9.0.1\\swashbuckle.aspnetcore.swagger.9.0.1.nupkg.sha512",
-    "C:\\Users\\RHeijligers\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\9.0.1\\swashbuckle.aspnetcore.swaggergen.9.0.1.nupkg.sha512",
-    "C:\\Users\\RHeijligers\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\9.0.1\\swashbuckle.aspnetcore.swaggerui.9.0.1.nupkg.sha512"
+    "C:\\Users\\RHeijligers\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.3\\microsoft.aspnetcore.openapi.10.0.3.nupkg.sha512",
+    "C:\\Users\\RHeijligers\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512",
+    "C:\\Users\\RHeijligers\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\8.1.2\\swashbuckle.aspnetcore.swaggerui.8.1.2.nupkg.sha512"
   ],
   "logs": []
 }
